@@ -66,12 +66,12 @@ In summary, configuring your Git username and email is a fundamental step in set
 
 Certainly! Here's the content you provided in a simplified format within a `readme.md` file:
 
-### 5. Generate and Setup SSH Keys for GitHub
+### Step 5: Generate and Setup SSH Keys for GitHub
 
 Follow these steps to set up SSH keys for GitHub:
 
-1. Visit [GitHub's SSH key documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for detailed instructions. You can access and write data in repositories on GitHub.com using SSH (Secure Shell Protocol). When you set up SSH, you will need to generate a new private SSH key and add it to the SSH agent. You must also add the public SSH key to your account on GitHub before you use the key to authenticate or sign commits. 
-The steps below will provide a simple explanation for the same:  
+1. Visit [GitHub's SSH key documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for detailed instructions. You can access and write data in repositories on GitHub.com using SSH (Secure Shell Protocol). When you set up SSH, you will need to generate a new private SSH key and add it to the SSH agent. You must also add the public SSH key to your account on GitHub before you use the key to authenticate or sign commits. <br/>
+**The steps below will provide a simple explanation for the same:**
 
 #### 1. Generate SSH Keys for GitHub
 
@@ -79,7 +79,7 @@ To securely access and write data in GitHub repositories using SSH, follow these
 
 1. Visit [GitHub's SSH key documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for detailed instructions.
 
-2. **Generate a New SSH Key**: You will create a new SSH key pair. The private key stays on your local machine, and the public key is shared with GitHub for authentication.
+2. **Generate a New SSH Key**: You will create a new SSH key pair. The private key stays on your local machine, and the public key is shared with GitHub for authentication. Paste the below command into your terminal. Replace "your_email@example.com" with your GitHub email address
 
    ```sh
    ssh-keygen -t ed25519 -C your_email@example.com
