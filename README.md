@@ -20,10 +20,13 @@ Open your Terminal and paste the following command:
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
 
 Once it finished installing, run the following 2 commands as prompted. These 2 commands add brew to the path and allow to run brew commands to install packages
+```shell
 * (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/akhil/.zprofile
 * eval "$(/opt/homebrew/bin/brew shellenv)"
+```
 
 Type: brew help and see if brew is added to the path
 
@@ -37,3 +40,4 @@ Open your terminal and exectue the following command
 
 ```shell
 brew install git
+```
