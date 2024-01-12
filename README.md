@@ -84,9 +84,13 @@ To securely access and write data in GitHub repositories using SSH, follow these
    ```sh
    ssh-keygen -t ed25519 -C your_email@example.com
    ```
+   - Press enter when prompted "Enter file in which to save the key".
+   - **Optional:** You can choose to set a passphrase for added security when using your private key. When prompted for a passphrase, enter a password. I typically use my computer password for this.This passphrase is separate from your GitHub password.
 
    - `-t ed25519`: This specifies the type of key to generate, which is recommended for modern systems.
    - `-C your_email@example.com`: This adds an optional comment to help identify the key.
+   
+   
 
 3. **Check for Key Files**: After generating the key pair, check if the key files were created on your system. These files are used for authentication.
 
@@ -97,8 +101,6 @@ To securely access and write data in GitHub repositories using SSH, follow these
 
    - `id_ed25519`: This is your private key.
    - `id_ed25519.pub`: This is your public key.
-
-4. **Set a Passphrase (Optional)**: You can choose to set a passphrase for added security when using your private key. This passphrase is separate from your GitHub password.
 
 #### 2. Start the SSH Agent
 
@@ -121,6 +123,12 @@ To ensure that your SSH key is used correctly, you need to configure your SSH cl
    ```sh
    open ~/.ssh/config  # If the file doesn't exist, create it
    ```
+
+   To create the file enter the following command into the terminal
+   ```sh
+   touch ~/.ssh/config  # create file called config
+   ```
+   This will create a new file called config in the ~/.ssh folder.
 
 2. **Add SSH Configuration**:
 
@@ -165,7 +173,7 @@ Finally, you need to let GitHub know about your public SSH key for authenticatio
 
 #### 6. Test the SSH Connection to GitHub
 
-To ensure that your SSH connection to GitHub is working correctly, run the following command:
+To ensure that your SSH connection to GitHub is working correctly, run the following command in the terminal:
 
 ```sh
 ssh -T git@github.com
