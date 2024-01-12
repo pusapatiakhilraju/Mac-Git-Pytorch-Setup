@@ -70,16 +70,15 @@ Certainly! Here's the content you provided in a simplified format within a `read
 
 Follow these steps to set up SSH keys for GitHub:
 
-1. Visit [GitHub's SSH key documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for detailed instructions. You can access and write data in repositories on GitHub.com using SSH (Secure Shell Protocol). When you set up SSH, you will need to generate a new private SSH key and add it to the SSH agent. You must also add the public SSH key to your account on GitHub before you use the key to authenticate or sign commits. <br/>
+Visit [GitHub's SSH key documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for detailed instructions. You can access and write data in repositories on GitHub.com using SSH (Secure Shell Protocol). When you set up SSH, you will need to generate a new private SSH key and add it to the SSH agent. You must also add the public SSH key to your account on GitHub before you use the key to authenticate or sign commits. <br/>
+
 **The steps below will provide a simple explanation for the same:**
 
 #### 1. Generate SSH Keys for GitHub
 
 To securely access and write data in GitHub repositories using SSH, follow these steps:
 
-1. Visit [GitHub's SSH key documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for detailed instructions.
-
-2. **Generate a New SSH Key**: You will create a new SSH key pair. The private key stays on your local machine, and the public key is shared with GitHub for authentication. Paste the below command into your terminal. Replace "your_email@example.com" with your GitHub email address
+1. **Generate a New SSH Key**: Firstly, You will create a new SSH key pair. The private key stays on your local machine, and the public key is shared with GitHub for authentication. Paste the below command into your terminal. Replace "your_email@example.com" with your GitHub email address
 
    ```sh
    ssh-keygen -t ed25519 -C your_email@example.com
@@ -92,7 +91,7 @@ To securely access and write data in GitHub repositories using SSH, follow these
    
    
 
-3. **Check for Key Files**: After generating the key pair, check if the key files were created on your system. These files are used for authentication.
+2. **Check for Key Files**: After generating the key pair, check if the key files were created on your system. These files are used for authentication.
 
    ```sh
    cd ~/.ssh
@@ -124,7 +123,7 @@ To ensure that your SSH key is used correctly, you need to configure your SSH cl
    open ~/.ssh/config  # If the file doesn't exist, create it
    ```
 
-   To create the file enter the following command into the terminal
+   If the file doesn't exist then to create the file enter the following command into the terminal
    ```sh
    touch ~/.ssh/config  # create file called config
    ```
@@ -148,7 +147,7 @@ To ensure that your SSH key is used correctly, you need to configure your SSH cl
 
 #### 4. Add SSH Key to SSH Agent
 
-To add your SSH key to the SSH agent, run the following command:
+To add your SSH key to the SSH agent, run the following command from the terminal:
 
 ```sh
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
@@ -161,7 +160,7 @@ This command prompts you for the passphrase you set (if any) when generating the
 Finally, you need to let GitHub know about your public SSH key for authentication:
 
 - **Copy the Public Key to Your Clipboard**:
-
+Paste the below command into the terminal and press enter to copy the public key to your clipboard.
   ```sh
   pbcopy < ~/.ssh/id_ed25519.pub
   ```
