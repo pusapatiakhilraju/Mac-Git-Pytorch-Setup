@@ -209,7 +209,7 @@ Before we begin, we want to give credit and thanks to [Daniel Bourke](https://gi
 
 ### 2. Install Miniforge3 (Conda installer)
 
-- Download [Miniforge3](https://raw.githubusercontent.com/pusapatiakhilraju/Mac-GitPytorch-Setup/master/miniforge-MacOSX-arm64.sh) for macOS arm64 chips (M1, M2, M1 Pro, M1 Max, M1 Ultra,  M3 Pro, M3 Max). 
+- Download **Miniforge3-MacOSX-arm64.sh** from my github repository for macOS arm64 chips (M1, M2, M1 Pro, M1 Max, M1 Ultra,  M3 Pro, M3 Max). 
 - Install Miniforge3 into your home directory by running the following commands in the terminal:
 
    ```bash
