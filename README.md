@@ -181,3 +181,139 @@ ssh -T git@github.com
 This will confirm that your SSH key is set up properly for authentication.
 
 That's it! You've successfully created and configured your SSH keys for secure access to GitHub repositories.
+
+
+# Pytorch -M3 Mac Setup
+
+**Note:** As of January 2024, Apple has introduced the M3 versions of Mac, further expanding the range of Apple Silicon devices. This guide remains relevant for all Apple Silicon Macs, including the M3 series.
+
+# Setting Up PyTorch on Apple Silicon (M1, M2, M1 Pro, M1 Max, M1 Ultra) for Data Science and Machine Learning
+
+## Introduction
+
+This guide will help you set up a machine learning environment with PyTorch on your Apple Silicon Mac, such as the M1, M2, M3, M1 Pro, M1 Max, M1 Ultra, M3 Pro, or M3 Max. You'll also enable PyTorch to use the Apple Silicon GPU for potentially faster computations.
+
+Before we begin, we want to give credit and thanks to [Daniel Bourke](https://github.com/mrdbourke/pytorch-apple-silicon) for his excellent repository, from which we've borrowed setup code and instructions.
+
+## Prerequisites
+
+1. An Apple Silicon Mac (M1, M2, M1 Pro, M1 Max, M1 Ultra,M3, M3 Pro, M3 Max etc).
+2. macOS 12.3+ (PyTorch will work on previous versions, but the GPU on your Mac won't be utilized, resulting in slower code).
+
+## Step-by-Step Setup (For Beginners)
+
+### 1. Install Homebrew
+
+- Download and install Homebrew from [brew.sh](https://brew.sh).
+- Follow the installation steps provided by Homebrew. **Note:** the simple steps to install brew are also provided in the git setup section.
+
+### 2. Install Miniforge3 (Conda installer)
+
+- [Download Miniforge3](https://raw.githubusercontent.com/pusapatiakhilraju/Mac-GitPytorch-Setup/main/miniforge-MacOSX-arm64.sh) for macOS arm64 chips (M1, M2, M1 Pro, M1 Max, M1 Ultra). 
+- Install Miniforge3 into your home directory by running the following commands in the terminal:
+
+   ```bash
+   chmod +x ~/Downloads/Miniforge3-MacOSX-arm64.sh
+   sh ~/Downloads/Miniforge3-MacOSX-arm64.sh
+   ```
+
+- Activate Miniforge3 by running:
+
+   ```bash
+   source ~/miniforge3/bin/activate
+   ```
+
+- **Restart your terminal.**
+
+### 3. Create a PyTorch Environment
+
+- Create a directory for your PyTorch environment (you can choose any name), for example:
+
+   ```bash
+   mkdir pytorch-test
+   cd pytorch-test
+   ```
+
+- Make and activate a Conda environment with Python 3.8 (considered the most stable for this setup):
+
+   ```bash
+   conda create --name myenv python=3.8
+   conda activate myenv
+   ```
+
+### 4. Install PyTorch and Dependencies
+
+- Install PyTorch 1.12.0+ for Mac using pip. You can find the latest version on the [PyTorch getting started page](https://pytorch.org/get-started/locally/).
+
+   ```bash
+   pip3 install torch torchvision torchaudio
+   ```
+
+- This will install various packages, including PyTorch.
+
+- Install common data science packages:
+
+   ```bash
+   conda install jupyter pandas numpy matplotlib scikit-learn tqdm
+   ```
+
+### 5. Start Jupyter Notebook
+
+- Launch Jupyter Notebook by running:
+
+   ```bash
+   jupyter notebook
+   ```
+
+- In the Jupyter Notebook interface, create a new notebook by selecting "New" -> "Notebook: Python 3 (ipykernel)".
+
+### 6. Verify Your Setup
+
+- In the newly created notebook, run the following code to verify that all dependencies are available and check your PyTorch version and GPU access:
+
+   ```python
+   import torch
+   import numpy as np
+   import pandas as pd
+   import sklearn
+   import matplotlib.pyplot as plt
+
+   print(f"PyTorch version: {torch.__version__}")
+
+   # Check PyTorch has access to MPS (Metal Performance Shader, Apple's GPU architecture)
+   print(f"Is MPS (Metal Performance Shader) built? {torch.backends.mps.is_built()}")
+   print(f"Is MPS available? {torch.backends.mps.is_available()}")
+
+   # Set the device
+   device = "mps" if torch.backends.mps.is_available() else "cpu"
+   print(f"Using device: {device}")
+   ```
+
+- If everything worked, you should see output similar to the following:
+
+   ```
+   PyTorch version: 1.12.0
+   Is MPS (Metal Performance Shader) built? True
+   Is MPS available? True
+   Using device: mps
+   ```
+
+- You are now all set up to run PyTorch on your Apple Silicon device with GPU acceleration!
+
+### 7. Utilizing the Apple Silicon GPU
+
+- To run data and models on your Apple Silicon GPU, use the PyTorch device name "mps" with `.to("mps")`. MPS stands for Metal Performance Shaders, which is Apple's GPU framework.
+
+   ```python
+   import torch
+
+   # Set the device
+   device = "mps" if torch.backends.mps.is_available() else "cpu"
+
+   # Create data and send it to the device
+   x = torch.rand(size=(3, 4)).to(device)
+   ```
+
+- You should see output indicating that the tensor is on your Apple Silicon GPU.
+
+Congratulations! Your Apple Silicon device is now ready for data science and machine learning with PyTorch and other essential libraries.
